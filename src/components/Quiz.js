@@ -12,7 +12,7 @@ function Quiz({userName, userCity, getUserCity, error, setError, userInfo, setUs
     if(checkedInput) {
       checkedInput.checked = false;
     }
-  }, [count]);
+  },[count]);
 
   function chooseOption(event) {
     setSelectedOption(event.target.value);
@@ -30,43 +30,43 @@ function Quiz({userName, userCity, getUserCity, error, setError, userInfo, setUs
     setCount(count + 1);
   }
 
-  return(
-    <div className="card">
+  return (
+    <div className='card'>
       <div className="user">Опрос проходит: {userName}</div>
-        <h2 className="question">{data.questions[count].quest}</h2>
+        <h2 className='question'>{data.questions[count].quest}</h2>
         <div ref={inputsWrapper}>
-          {(data.questions[count].answerType === "text") ? (
+          {(data.questions[count].answerType === 'text') ? (
             <>
-              <input type="text" 
-                     className="input" 
-                     placeholder="Enter your city"
-                     onChange={(event)=>{userCity=event.target.value}}
+              <input type = 'text' 
+                     className = 'input'
+                     placeholder = 'Enter your city'
+                     onChange = {(event) => {userCity = event.target.value}}
               />
-              {error && <div className="err">{error}</div>}
-              <button className="btn" onClick={()=>getUserCity(userCity)}>
+              {error && <div className = 'err'>{error}</div>}
+              <button className = 'btn' onClick = {() => getUserCity(userCity)}>
                 {data.nameFinishButton}
               </button>
             </>
           ):(
             <>
-              <ul className="list">
+              <ul className = 'list'>
                 {data.questions[count].answers.map((item) => (
-                  <li className="item" key={item.id}>
-                    <label htmlFor={item.id} className="label">
-                      <input type={data.questions[count].answerType} 
-                             name={data.questions[count].id} 
-                             value={item.answer} 
-                             id={item.id}
-                             className="label-input"
-                             onChange={chooseOption}
+                  <li className = 'item' key={item.id}>
+                    <label htmlFor = {item.id} className = 'label'>
+                      <input type = {data.questions[count].answerType} 
+                             name = {data.questions[count].id} 
+                             value = {item.answer} 
+                             id = {item.id}
+                             className = 'label-input'
+                             onChange = {chooseOption}
                       />
                       {item.answer}
                     </label>
                   </li>
                 ))}
               </ul>
-              {error && <div className="err">{error}</div>}
-              <button className="btn" onClick={showNextQuestion}>
+              {error && <div className = 'err'>{error}</div>}
+              <button className = 'btn'onClick = {showNextQuestion}>
                 {data.nameNextButton}
               </button>
             </>

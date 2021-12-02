@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import './App.css';
 import Start from './components/Start';
 import Quiz from './components/Quiz';
 import End from './components/End';
 
 function App() {
   const [step, setStep] = useState(1);
-  const [userName, setUserName] = useState("");
-  const [userCity, setUserCity] = useState("");
+  const [userName, setUserName] = useState('');
+  const [userCity, setUserCity] = useState('');
   let [userInfo, setUserInfo] = useState([]);
   const [error, setError] = useState('');
 
@@ -29,19 +28,18 @@ function App() {
       setUserCity(city.trim());
       setUserInfo(userInfo = userInfo.concat(city));
       setError('');
-      console.log(userInfo);
     }
   }
 
   function restart() {
-    setUserName("");
-    setUserCity("");
+    setUserName('');
+    setUserCity('');
     setUserInfo([]);
     setStep(1);
   }
 
   return (
-    <div className="app">
+    <div className = 'app'>
         {step === 1 && <Start 
           getUserName = {getUserName}
           userName = {userName} 
